@@ -22,11 +22,8 @@ public class Board {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer no;
 	
-	@Column(name = "division")
-	private String division;
-	
-	@Column(name = "department")
-	private String department;
+	@Column(name = "divisioncode")
+	private String divisioncode;
 	
 	@Column(name = "category")
 	private String category;
@@ -37,11 +34,8 @@ public class Board {
 	@Column(name = "contents")
 	private String contents;
 	
-	@Column(name = "answercontents")
-	private String answercontents;
-	
-	@Column(name = "answer")
-	private boolean answer;
+	@Column(name = "addboard")
+	private boolean addboard;
 	
 	@Column(name = "studentid")
 	private Integer studentid;
@@ -49,27 +43,31 @@ public class Board {
 	@Column(name = "createdtime")
 	private Date createdtime;
 	
+	@Column(name = "counts")
+	private Integer counts;
+
+	
 	public Board() {
 		super();
 	}
 	
 	
 
-	public Board(Integer no, String division, String department, String category, String title, String contents,
-			String answercontents, boolean answer, Integer studentid, Date createdtime) {
+	public Board(Integer no, String divisioncode, String category, String title, String contents,
+			Integer studentid, Date createdtime, Integer counts) {
 		super();
 		this.no = no;
-		this.division = division;
-		this.department = department;
+		this.divisioncode = divisioncode;
 		this.category = category;
 		this.title = title;
 		this.contents = contents;
-		this.answercontents = answercontents;
-		this.answer = answer;
 		this.studentid = studentid;
 		this.createdtime = createdtime;
+		this.counts = counts;
 	}
 
+	
+	// ---Getter/Setter ---
 
 	public Integer getNo() {
 		return no;
@@ -79,20 +77,12 @@ public class Board {
 		this.no = no;
 	}
 
-	public String getDivision() {
-		return division;
+	public String getDivisioncode() {
+		return divisioncode;
 	}
 
-	public void setDivision(String division) {
-		this.division = division;
-	}
-
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
+	public void setDivisioncode(String divisioncode) {
+		this.divisioncode = divisioncode;
 	}
 
 	public String getCategory() {
@@ -118,21 +108,13 @@ public class Board {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-
-	public String getAnswercontents() {
-		return answercontents;
+	
+	public boolean isAddboard() {
+		return addboard;
 	}
 
-	public void setAnswercontents(String answercontents) {
-		this.answercontents = answercontents;
-	}
-
-	public boolean isAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(boolean answer) {
-		this.answer = answer;
+	public void setAddboard(boolean addboard) {
+		this.addboard = addboard;
 	}
 
 	public Integer getStudentid() {
@@ -151,11 +133,13 @@ public class Board {
 		this.createdtime = createdtime;
 	}
 
-	
-	// ---Getter/Setter ---
-	
-	
+	public Integer getCounts() {
+		return counts;
+	}
+
+	public void setCounts(Integer counts) {
+		this.counts = counts;
+	}
 
 	
-
 }

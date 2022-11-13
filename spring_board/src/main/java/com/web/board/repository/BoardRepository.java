@@ -3,24 +3,27 @@ package com.web.board.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.web.board.model.Board;
 
 public interface BoardRepository extends JpaRepository<Board, Integer> {
-	
+	/*
 	public final static String SELECT_BOARD_LIST_PAGED = ""
 			+ "SELECT "
 			+ "no,"
-			+ "division,"
-			+ "department,"
+			+ "divisioncode,"
 			+ "category,"
 			+ "title,"
 			+ "contents,"
+			+ "addboard,"
 			+ "answer,"
 			+ "answercontents,"
 			+ "studentid,"
-			+ "createdtime"
+			+ "createdtime,"
+			+ "counts"
 			+ " FROM board WHERE 0 < no "
 			+ "ORDER BY no DESC LIMIT ?1, ?2";
 	
@@ -29,4 +32,13 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	List<Board> findFromTo(
 			final Integer objectStartNum,
 			final Integer objectEndNum);
+			
+	*/
+	
+	/*
+	@Modifying    
+	@Query("UPDATE Board b SET b.counts = b.counts + 1 where b.no = :no")    
+	int updateView(Integer no);
+	*/
 }
+

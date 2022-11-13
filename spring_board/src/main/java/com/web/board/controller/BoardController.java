@@ -1,5 +1,6 @@
 package com.web.board.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.board.model.Board;
@@ -25,19 +25,19 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
-
+/*
 	@GetMapping("/board")
 	public ResponseEntity<Map> getAllBoards(@RequestParam(value = "p_num", required=false) Integer p_num) {
 		if (p_num == null || p_num <= 0) p_num = 1;
 		
 		return boardService.getPagingBoard(p_num);
 	}
-
+*/
 	// get all board 
-//	@GetMapping("/board")
-//	public List<Board> getAllBoards() {
-//		return boardService.getAllBoard();
-//	}
+	@GetMapping("/board")
+	public List<Board> getAllBoards() {
+		return boardService.getAllBoard();
+	}
 
 	// create board
 	@PostMapping("/board")
@@ -50,6 +50,7 @@ public class BoardController {
 	public ResponseEntity<Board> getBoardByNo(
 			@PathVariable Integer no) {
 		
+		
 		return boardService.getBoard(no);
 	}
 
@@ -58,15 +59,16 @@ public class BoardController {
 	public ResponseEntity<Board> updateBoardByNo(
 			@PathVariable Integer no, @RequestBody Board board){
 		
+		
 		return boardService.updateBoard(no, board);
 	}
 	
 	// delete board
-		@DeleteMapping("/board/{no}")
-		public ResponseEntity<Map<String, Boolean>> deleteBoardByNo(
-				@PathVariable Integer no) {
-			
-			return boardService.deleteBoard(no);
-		}
+	@DeleteMapping("/board/{no}")
+	public ResponseEntity<Map<String, Boolean>> deleteBoardByNo(
+			@PathVariable Integer no) {
+		
+		return boardService.deleteBoard(no);
+	}
 	
 }

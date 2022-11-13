@@ -8,11 +8,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.web.board.exception.ResourceNotFoundException;
 import com.web.board.model.Board;
 import com.web.board.repository.BoardRepository;
-import com.web.board.util.PagingUtil;
 
 @Service
 public class BoardService {
@@ -23,7 +23,7 @@ public class BoardService {
 	public int findAllCount() {
 		return (int) boardRepository.count();
 	}
-	
+/*
 	// get paging boards data
 	public ResponseEntity<Map> getPagingBoard(Integer p_num) {
 		Map result = null;
@@ -46,7 +46,7 @@ public class BoardService {
 		
 		return ResponseEntity.ok(result);
 	}	
-	
+*/
 	// get boards data
 	public List<Board> getAllBoard() {
 		return boardRepository.findAll();
@@ -62,6 +62,8 @@ public class BoardService {
 		Board board = boardRepository.findById(no)
 				.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
 		
+		
+		
 		return ResponseEntity.ok(board);
 	}
 	
@@ -70,12 +72,22 @@ public class BoardService {
 			Integer no, Board updatedBoard) {
 		Board board = boardRepository.findById(no)
 				.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
-		board.setDivision(updatedBoard.getDivision());
-		board.setDepartment(updatedBoard.getDepartment());
+		board.setDivisioncode(updatedBoard.getDivisioncode());
 		board.setCategory(updatedBoard.getCategory());
 		board.setTitle(updatedBoard.getTitle());
 		board.setContents(updatedBoard.getContents());
 		board.setCreatedtime(new Date());
+		
+		Board endUpdatedBoard = boardRepository.save(board);
+		return ResponseEntity.ok(endUpdatedBoard);
+	}
+	
+	// update count 
+	public ResponseEntity<Board> updateCount(
+			Integer no, Board updatedBoard) {
+		Board board = boardRepository.findById(no)
+				.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
+		board.setCounts(updatedBoard.getCounts());
 		
 		Board endUpdatedBoard = boardRepository.save(board);
 		return ResponseEntity.ok(endUpdatedBoard);
@@ -91,9 +103,11 @@ public class BoardService {
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("Deleted Board Data by id : ["+no+"]", Boolean.TRUE);
 		return ResponseEntity.ok(response);
-	}
-
-
-		
-		
+	}	
+	/*
+	@Transactional   
+	public int updateView(Integer no) { 
+		return boardRepository.updateView(no); 
+		}
+	*/
 }

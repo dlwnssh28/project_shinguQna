@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.board.model.AnswerBoard;
 import com.web.board.model.Member;
 import com.web.board.service.MemberService;
 
@@ -40,5 +42,14 @@ public class MemberController {
 	public ResponseEntity<Member> getMemberNo(
 			@RequestParam String id) {
 		return memberService.getMemberFromId(id);
+	}
+	
+	// update board
+	@PutMapping("/member/{no}")
+	public ResponseEntity<Member> updateMemberByNo(
+			@PathVariable Integer no, @RequestBody Member member){
+		
+		
+		return memberService.updateMember(no, member);
 	}
 }

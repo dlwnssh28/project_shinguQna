@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.web.board.exception.ResourceNotFoundException;
 import com.web.board.exception.SystemMaintenanceException;
 import com.web.board.exception.ValidationCheckException;
+import com.web.board.model.AnswerBoard;
 import com.web.board.model.Member;
 import com.web.board.repository.MemberRepository;
 import com.web.board.util.EncryptUtil;
@@ -60,5 +61,20 @@ public class MemberService {
 		
 		return ResponseEntity.ok(memberList);
 	}
+	
+	// update board 
+		public ResponseEntity<Member> updateMember(
+				Integer no, Member updatedMember) {
+			Member member = memberRepository.findById(no)
+					.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
+			member.setUsername(updatedMember.getUsername());
+			member.setPassword(updatedMember.getPassword());
+			//member.setDivisioncode(updatedMember.getDivisioncode());
+			//member.setStudentid(updatedMember.getStudentid());
+			
+			Member endMember= memberRepository.save(member);
+			return ResponseEntity.ok(endMember);
+		}
+		
  	
 }

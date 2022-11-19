@@ -35,10 +35,10 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 			
 	*/
 	
-	/*
+	// increase count
 	@Modifying    
-	@Query("UPDATE Board b SET b.counts = b.counts + 1 where b.no = :no")    
-	int updateView(Integer no);
-	*/
+	@Query("UPDATE Board b SET b.counts = b.counts + 1 WHERE no = ?1")    
+	int updateCounts(Integer no);
+	
 }
 

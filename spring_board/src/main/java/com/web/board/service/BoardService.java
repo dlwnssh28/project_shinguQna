@@ -62,10 +62,16 @@ public class BoardService {
 		Board board = boardRepository.findById(no)
 				.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
 		
-		
+		//boardRepository.updateCount(no);
 		
 		return ResponseEntity.ok(board);
 	}
+	
+	//increase count 
+	@Transactional
+	public int updateCounts(Integer no) {
+        return boardRepository.updateCounts(no);
+    }
 	
 	// update board 
 	public ResponseEntity<Board> updateBoard(
@@ -82,16 +88,6 @@ public class BoardService {
 		return ResponseEntity.ok(endUpdatedBoard);
 	}
 	
-	// update count 
-	public ResponseEntity<Board> updateCount(
-			Integer no, Board updatedBoard) {
-		Board board = boardRepository.findById(no)
-				.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
-		board.setCounts(updatedBoard.getCounts());
-		
-		Board endUpdatedBoard = boardRepository.save(board);
-		return ResponseEntity.ok(endUpdatedBoard);
-	}
 	
 	// delete board
 	public ResponseEntity<Map<String, Boolean>> deleteBoard(

@@ -49,7 +49,7 @@ public class BoardController {
 	@GetMapping("/board/{no}")
 	public ResponseEntity<Board> getBoardByNo(
 			@PathVariable Integer no) {
-		
+		boardService.updateCounts(no); // increase count
 		
 		return boardService.getBoard(no);
 	}

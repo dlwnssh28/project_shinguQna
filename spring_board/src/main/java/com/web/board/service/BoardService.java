@@ -82,12 +82,12 @@ public class BoardService {
 		board.setCategory(updatedBoard.getCategory());
 		board.setTitle(updatedBoard.getTitle());
 		board.setContents(updatedBoard.getContents());
+		board.setAddboard(updatedBoard.isAddboard());
 		board.setCreatedtime(new Date());
 		
 		Board endUpdatedBoard = boardRepository.save(board);
 		return ResponseEntity.ok(endUpdatedBoard);
 	}
-	
 	
 	// delete board
 	public ResponseEntity<Map<String, Boolean>> deleteBoard(

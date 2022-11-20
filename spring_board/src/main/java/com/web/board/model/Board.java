@@ -53,7 +53,7 @@ public class Board {
 	
 	
 
-	public Board(Integer no, String divisioncode, String category, String title, String contents,
+	public Board(Integer no, String divisioncode, String category, String title, String contents, Boolean addboard,
 			Integer studentid, Date createdtime, Integer counts) {
 		super();
 		this.no = no;
@@ -61,6 +61,7 @@ public class Board {
 		this.category = category;
 		this.title = title;
 		this.contents = contents;
+		this.addboard = addboard;
 		this.studentid = studentid;
 		this.createdtime = createdtime;
 		this.counts = counts;

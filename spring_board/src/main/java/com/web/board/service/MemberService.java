@@ -69,6 +69,7 @@ public class MemberService {
 					.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
 			member.setUsername(updatedMember.getUsername());
 			member.setPassword(updatedMember.getPassword());
+			member.setDarkmode(updatedMember.isDarkmode());
 			//member.setDivisioncode(updatedMember.getDivisioncode());
 			//member.setStudentid(updatedMember.getStudentid());
 			

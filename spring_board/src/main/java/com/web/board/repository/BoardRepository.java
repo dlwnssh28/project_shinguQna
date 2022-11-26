@@ -31,8 +31,7 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	@Query(value = SELECT_BOARD_LIST_PAGED, nativeQuery = true)
 	List<Board> findFromTo(
 			final Integer objectStartNum,
-			final Integer objectEndNum);
-			
+			final Integer objectEndNum);		
 	*/
 	
 	// increase count

@@ -23,6 +23,7 @@ public class BoardService {
 	public int findAllCount() {
 		return (int) boardRepository.count();
 	}
+	
 /*
 	// get paging boards data
 	public ResponseEntity<Map> getPagingBoard(Integer p_num) {

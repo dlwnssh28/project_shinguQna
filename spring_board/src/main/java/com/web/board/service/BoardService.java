@@ -85,6 +85,7 @@ public class BoardService {
 		board.setContents(updatedBoard.getContents());
 		board.setAddboard(updatedBoard.isAddboard());
 		board.setCreatedtime(new Date());
+		board.setLookup(updatedBoard.isLookup());
 		
 		Board endUpdatedBoard = boardRepository.save(board);
 		return ResponseEntity.ok(endUpdatedBoard);

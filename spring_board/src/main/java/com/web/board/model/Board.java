@@ -45,7 +45,9 @@ public class Board {
 	
 	@Column(name = "counts")
 	private Integer counts;
-
+	
+	@Column(name = "lookup")
+	private boolean lookup;
 	
 	public Board() {
 		super();
@@ -140,6 +142,14 @@ public class Board {
 
 	public void setCounts(Integer counts) {
 		this.counts = counts;
+	}
+
+	public boolean isLookup() {
+		return lookup;
+	}
+
+	public void setLookup(boolean lookup) {
+		this.lookup = lookup;
 	}
 
 	

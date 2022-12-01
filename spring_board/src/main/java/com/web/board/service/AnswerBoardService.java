@@ -46,7 +46,6 @@ public class AnswerBoardService {
 		answerboard.setAnswercontents(updatedAnswerBoard.getAnswercontents());
 		answerboard.setNo(updatedAnswerBoard.getNo());
 		answerboard.setStudentid(updatedAnswerBoard.getStudentid());
-		answerboard.setLookup(updatedAnswerBoard.isLookup());
 		
 		AnswerBoard endUpdatedBoard = answerboardRepository.save(answerboard);
 		return ResponseEntity.ok(endUpdatedBoard);

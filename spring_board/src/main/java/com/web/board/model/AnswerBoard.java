@@ -38,6 +38,9 @@ public class AnswerBoard {
 	
 	@Column(name = "answercontents")
 	private String answercontents;
+	
+	@Column(name = "lookup")
+	private boolean lookup;
 
 	public Integer getNoanswerboard() {
 		return noanswerboard;
@@ -70,6 +73,16 @@ public class AnswerBoard {
 	public void setAnswercontents(String answercontents) {
 		this.answercontents = answercontents;
 	}
+
+	public boolean isLookup() {
+		return lookup;
+	}
+
+	public void setLookup(boolean lookup) {
+		this.lookup = lookup;
+	}
+	
+	
 
 	
 }

@@ -13,7 +13,7 @@ import com.web.board.model.Division;
 import com.web.board.service.CategoryService;
 import com.web.board.service.DivisionService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://3.39.62.224:3000")
 @RestController
 @RequestMapping("/api")
 public class DivisionController {

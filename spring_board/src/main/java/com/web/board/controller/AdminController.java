@@ -12,7 +12,7 @@ import com.web.board.model.Admin;
 import com.web.board.model.Division;
 import com.web.board.service.AdminService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://3.39.62.224:3000")
 @RestController
 @RequestMapping("/api")
 public class AdminController {

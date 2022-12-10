@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.board.model.Category;
 import com.web.board.service.CategoryService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://3.39.62.224:3000")
 @RestController
 @RequestMapping("/api")
 public class CategoryController {

@@ -19,7 +19,7 @@ import com.web.board.model.AnswerBoard;
 import com.web.board.model.Board;
 import com.web.board.service.AnswerBoardService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://3.39.62.224:3000")
 @RestController
 @RequestMapping("/api")
 public class AnswerBoardController {

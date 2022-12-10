@@ -39,7 +39,6 @@ public class Member {
 	private String username;
 	
 	@Column(name = "password")
-	@JsonIgnore
 	private String password;
 	
 	@Column(name = "divisioncode")

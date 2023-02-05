@@ -36,9 +36,17 @@ public class MemberService {
 			!vUtil.validationPWD(member.getPassword())) {
 			new ValidationCheckException();
 		}
+		// 2. 패스워드의 암호화 
+				try {
+					member.setPassword(eUtil.encryptSHA256(member.getPassword()));
+				} catch (NoSuchAlgorithmException e) {
+					e.printStackTrace();
+					new SystemMaintenanceException();
+				}
 		
-		member.setPassword(member.getPassword());
-	
+		//member.setPassword(member.getPassword());
+
+		member.setApprove(false);
 		
 		// 3. DB에 등록 
 		return memberRepository.save(member);
@@ -47,20 +55,38 @@ public class MemberService {
 	/**
 	 * 회원 정보가져오기
 	 * @param no
+	 * @param member2 
 	 * @return
 	 */
 	public ResponseEntity<Member> getMember(Integer no) {
 		Member member = memberRepository.findById(no)
 				.orElseThrow(() -> new ResourceNotFoundException("Not exist Member Data by no : ["+no+"]"));
-
+		System.out.println(member);
 		return ResponseEntity.ok(member);
 	}
-
-	public ResponseEntity<Member> getMemberFromId(String id) {
-		Member memberList = memberRepository.findByUserId(id);
+	
+	public ResponseEntity<List<Member>> getMemberFromId(String id) {
 		
+		List<Member> memberList = memberRepository.findByUserId(id);
+		System.out.println(memberList);
+		//System.out.println(member.getPassword().equals(memberList.getPassword()));
+		//String pw = eUtil.encryptSHA256(memberList.getPassword());
+		//System.out.println(memberList.getPassword().equals(eUtil.encryptSHA256(memberList.getPassword())));
 		return ResponseEntity.ok(memberList);
 	}
+	
+	
+	/*
+	public ResponseEntity<Boolean> getMemberFromId(String id) {
+		List<Member> memberList = memberRepository.findByUserId(id);
+		Boolean result = false;
+		try {
+			result = (memberList != null && memberList.size() != 0 &&!memberList.get(0).getStudentid().equals("")) ? true : false;
+		} catch (Exception e) {e.printStackTrace();}
+		
+		return ResponseEntity.ok(result);
+	}
+	*/
 	
 	// update board 
 		public ResponseEntity<Member> updateMember(
@@ -70,6 +96,7 @@ public class MemberService {
 			member.setUsername(updatedMember.getUsername());
 			member.setPassword(updatedMember.getPassword());
 			member.setDarkmode(updatedMember.isDarkmode());
+			member.setApprove(updatedMember.isApprove());
 			//member.setDivisioncode(updatedMember.getDivisioncode());
 			//member.setStudentid(updatedMember.getStudentid());
 			

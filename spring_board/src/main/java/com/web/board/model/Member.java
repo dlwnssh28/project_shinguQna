@@ -47,6 +47,9 @@ public class Member {
 	@Column(name = "darkmode")
 	private boolean darkmode;
 	
+	@Column(name = "approve")
+	private boolean approve;
+	
 	public Integer getNo() {
 		return no;
 	}
@@ -94,9 +97,17 @@ public class Member {
 	public void setDarkmode(boolean darkmode) {
 		this.darkmode = darkmode;
 	}
+	
+	public boolean isApprove() {
+		return approve;
+	}
+
+	public void setApprove(boolean approve) {
+		this.approve = approve;
+	}
 
 	@Override
 	public String toString() {
-		return "Member [no="+ no + ",studentid =" + studentid  + ", username=" + username + ", password=" + password + ", divisioncode=" + divisioncode + ", darkmode=" + darkmode+ "]";
+		return "Member [no="+ no + ",studentid =" + studentid  + ", username=" + username + ", password=" + password + ", divisioncode=" + divisioncode + ", darkmode=" + darkmode+ ", approve=" + approve + "]";
 	}
 }

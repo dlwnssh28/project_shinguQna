@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.board.model.Category;
-import com.web.board.model.Division;
+import com.web.board.entity.Category;
+import com.web.board.entity.Division;
 import com.web.board.service.CategoryService;
 import com.web.board.service.DivisionService;
 

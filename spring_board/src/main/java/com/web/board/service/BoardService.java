@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.board.entity.Board;
 import com.web.board.exception.ResourceNotFoundException;
-import com.web.board.model.Board;
 import com.web.board.repository.BoardRepository;
 
 @Service
@@ -84,7 +84,7 @@ public class BoardService {
 		board.setTitle(updatedBoard.getTitle());
 		board.setContents(updatedBoard.getContents());
 		board.setAddboard(updatedBoard.isAddboard());
-		board.setCreatedtime(new Date());
+		//board.setCreatedtime(new Date()); //업데이트시 작성일 변경 X
 		board.setLookup(updatedBoard.isLookup());
 		
 		Board endUpdatedBoard = boardRepository.save(board);

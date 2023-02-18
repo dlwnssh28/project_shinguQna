@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.board.model.Board;
+import com.web.board.entity.Board;
 import com.web.board.service.BoardService;
 
 @CrossOrigin(origins = "http://3.39.62.224:3000")

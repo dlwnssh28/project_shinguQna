@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.board.model.AnswerBoard;
-import com.web.board.model.Member;
+import com.web.board.entity.AnswerBoard;
+import com.web.board.entity.Member;
 import com.web.board.service.MemberService;
 
 @CrossOrigin(origins = "http://3.39.62.224:3000")
@@ -34,10 +34,10 @@ public class MemberController {
 		return memberService.createMember(member);
 	}
 	
-	@GetMapping("/member/{no}")
-	public ResponseEntity<Member> getMemberNo(
-			@PathVariable Integer no) {
-		return memberService.getMember(no);
+	@GetMapping("/member/{studentid}")
+	public ResponseEntity<Member> getMemberStudentid(
+			@PathVariable String studentid) {
+		return memberService.getMember(studentid);
 	}
 	
 	@GetMapping("/member")
@@ -49,9 +49,10 @@ public class MemberController {
 	// update board
 	@PutMapping("/member/{no}")
 	public ResponseEntity<Member> updateMemberByNo(
-			@PathVariable Integer no, @RequestBody Member member){
+			@PathVariable String studentid, @RequestBody Member member){
 		
 		
-		return memberService.updateMember(no, member);
+		return memberService.updateMember(studentid, member);
+		
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.web.board.model.Board;
+import com.web.board.entity.Board;
 
 public interface BoardRepository extends JpaRepository<Board, Integer> {
 	/*
@@ -38,6 +38,7 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	@Modifying    
 	@Query("UPDATE Board b SET b.counts = b.counts + 1 WHERE no = ?1")    
 	int updateCounts(Integer no);
+	
 	
 }
 

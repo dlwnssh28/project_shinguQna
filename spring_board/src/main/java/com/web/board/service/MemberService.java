@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.web.board.entity.AnswerBoard;
+import com.web.board.entity.Member;
 import com.web.board.exception.ResourceNotFoundException;
 import com.web.board.exception.SystemMaintenanceException;
 import com.web.board.exception.ValidationCheckException;
-import com.web.board.model.AnswerBoard;
-import com.web.board.model.Member;
 import com.web.board.repository.MemberRepository;
 import com.web.board.util.EncryptUtil;
 import com.web.board.util.ValidationUtil;
@@ -54,20 +54,20 @@ public class MemberService {
 
 	/**
 	 * 회원 정보가져오기
-	 * @param no
+	 * @param studentid
 	 * @param member2 
 	 * @return
 	 */
-	public ResponseEntity<Member> getMember(Integer no) {
-		Member member = memberRepository.findById(no)
-				.orElseThrow(() -> new ResourceNotFoundException("Not exist Member Data by no : ["+no+"]"));
+	public ResponseEntity<Member> getMember(String studentid) {
+		Member member = memberRepository.findById(studentid)
+				.orElseThrow(() -> new ResourceNotFoundException("Not exist Member Data by no : ["+studentid+"]"));
 		System.out.println(member);
 		return ResponseEntity.ok(member);
 	}
 	
-	public ResponseEntity<List<Member>> getMemberFromId(String id) {
+	public ResponseEntity<List<Member>> getMemberFromId(String studentid) {
 		
-		List<Member> memberList = memberRepository.findByUserId(id);
+		List<Member> memberList = memberRepository.findByUserId(studentid);
 		System.out.println(memberList);
 		//System.out.println(member.getPassword().equals(memberList.getPassword()));
 		//String pw = eUtil.encryptSHA256(memberList.getPassword());
@@ -90,9 +90,9 @@ public class MemberService {
 	
 	// update board 
 		public ResponseEntity<Member> updateMember(
-				Integer no, Member updatedMember) {
-			Member member = memberRepository.findById(no)
-					.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
+				String studentid, Member updatedMember) {
+			Member member = memberRepository.findById(studentid)
+					.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+studentid+"]"));
 			member.setUsername(updatedMember.getUsername());
 			member.setPassword(updatedMember.getPassword());
 			member.setDarkmode(updatedMember.isDarkmode());
@@ -103,6 +103,7 @@ public class MemberService {
 			Member endMember= memberRepository.save(member);
 			return ResponseEntity.ok(endMember);
 		}
+		
 		
  	
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.board.entity.AnswerBoard;
 import com.web.board.entity.Board;
 import com.web.board.exception.ResourceNotFoundException;
 import com.web.board.repository.BoardRepository;
@@ -64,6 +65,17 @@ public class BoardService {
 				.orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+no+"]"));
 		
 		//boardRepository.updateCount(no);
+		
+		return ResponseEntity.ok(board);
+	}
+	
+	// get board one by id 
+	// 게시물 학번으로 가져오기
+	public ResponseEntity<List<Board>> getBoardByStudentId(Integer studentid) {
+		List<Board> board = boardRepository.getBoardByStudentId(studentid);
+				//.orElseThrow(() -> new ResourceNotFoundException("Not exist AnswerBoard Data by no : ["+no+"]"));
+		
+		
 		
 		return ResponseEntity.ok(board);
 	}

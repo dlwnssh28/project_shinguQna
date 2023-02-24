@@ -40,10 +40,15 @@ public class MemberController {
 		return memberService.getMember(studentid);
 	}
 	
+	@GetMapping("/member/approve")
+	public List<Member> getMemberApprovement() {
+		return memberService.getMemberApprove();
+	}
+	
 	@GetMapping("/member")
 	public ResponseEntity<List<Member>> getMemberNo(
-			@RequestParam String id) {
-		return memberService.getMemberFromId(id);
+			@RequestParam String studentid) {
+		return memberService.getMemberFromId(studentid);
 	}
 	
 	// update board

@@ -75,6 +75,16 @@ public class MemberService {
 		return ResponseEntity.ok(memberList);
 	}
 	
+	//approve 0 인 회원 가져오기
+	public List<Member> getMemberApprove() {
+		
+		
+		//System.out.println(member.getPassword().equals(memberList.getPassword()));
+		//String pw = eUtil.encryptSHA256(memberList.getPassword());
+		//System.out.println(memberList.getPassword().equals(eUtil.encryptSHA256(memberList.getPassword())));
+		return memberRepository.findApprove();
+	}
+	
 	
 	/*
 	public ResponseEntity<Boolean> getMemberFromId(String id) {

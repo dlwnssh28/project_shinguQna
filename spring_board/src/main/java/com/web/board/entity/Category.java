@@ -1,4 +1,4 @@
-package com.web.board.model;
+package com.web.board.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

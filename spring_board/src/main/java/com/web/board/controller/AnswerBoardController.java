@@ -48,6 +48,15 @@ public class AnswerBoardController {
 		return answerboardService.getAnswerBoard(no);
 	}
 	
+	// get board
+		@GetMapping("/answerboard/board/{no}")
+		public ResponseEntity<AnswerBoard> getBoardNo(
+				@PathVariable Integer no) {
+			
+			
+			return answerboardService.getBoardno(no);
+		}
+		
 	// update board
 	@PutMapping("/answerboard/{noanswerboard}")
 	public ResponseEntity<AnswerBoard> updateAnswerBoardByNo(

@@ -38,6 +38,17 @@ public class AnswerBoardService {
 		return ResponseEntity.ok(answerboard);
 	}
 	
+	// get board one by id 
+	// 답변게시물 글번호로 answerboard에서 no
+	public ResponseEntity<AnswerBoard> getBoardno(Integer no) {
+		AnswerBoard answerboard = answerboardRepository.getBoardno(no);
+				//.orElseThrow(() -> new ResourceNotFoundException("Not exist AnswerBoard Data by no : ["+no+"]"));
+		
+		
+		
+		return ResponseEntity.ok(answerboard);
+	}
+		
 	// update board 
 	public ResponseEntity<AnswerBoard> updateAnswerBoard(
 			Integer noanswerboard, AnswerBoard updatedAnswerBoard) {

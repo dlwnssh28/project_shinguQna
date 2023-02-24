@@ -13,4 +13,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 		@Query("SELECT mb FROM Member mb WHERE mb.studentid = :studentid")
 		List<Member> findByUserId(@Param("studentid") String studentid);
 		
+		@Query("SELECT mb FROM Member mb WHERE mb.approve = 0")
+		List<Member> findApprove();
 }

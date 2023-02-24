@@ -55,6 +55,14 @@ public class BoardController {
 		return boardService.getBoard(no);
 	}
 
+	// get board by studentid
+	@GetMapping("/board/studentid/{studentid}")
+	public ResponseEntity<List<Board>> getBoardByStudentId(
+			@PathVariable Integer studentid) {
+		
+		return boardService.getBoardByStudentId(studentid);
+	}
+
 	// update board
 	@PutMapping("/board/{no}")
 	public ResponseEntity<Board> updateBoardByNo(

@@ -1,4 +1,4 @@
-package com.web.board.model;
+package com.web.board.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,16 +29,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Member {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer no;
-
-	@Column(name = "studentid")
 	private String studentid;
 
 	@Column(name = "username")
 	private String username;
 	
-	@Column(name = "password")
+	@Column(name = "password", nullable = false)
 	private String password;
 	
 	@Column(name = "divisioncode")
@@ -49,14 +45,6 @@ public class Member {
 	
 	@Column(name = "approve")
 	private boolean approve;
-	
-	public Integer getNo() {
-		return no;
-	}
-
-	public void setNo(Integer no) {
-		this.no = no;
-	}
 
 	public String getStudentid() {
 		return studentid;
@@ -108,6 +96,6 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [no="+ no + ",studentid =" + studentid  + ", username=" + username + ", password=" + password + ", divisioncode=" + divisioncode + ", darkmode=" + darkmode+ ", approve=" + approve + "]";
+		return "Member [studentid =" + studentid  + ", username=" + username + ", password=" + password + ", divisioncode=" + divisioncode + ", darkmode=" + darkmode+ ", approve=" + approve + "]";
 	}
 }

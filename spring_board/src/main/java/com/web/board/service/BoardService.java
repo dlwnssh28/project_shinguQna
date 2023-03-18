@@ -94,6 +94,7 @@ public class BoardService {
 		board.setDivisioncode(updatedBoard.getDivisioncode());
 		board.setCategory(updatedBoard.getCategory());
 		board.setTitle(updatedBoard.getTitle());
+		board.setUpdatedtime(updatedBoard.getUpdatedtime());
 		board.setContents(updatedBoard.getContents());
 		board.setAddboard(updatedBoard.isAddboard());
 		//board.setCreatedtime(new Date()); //업데이트시 작성일 변경 X

@@ -38,7 +38,7 @@ public class Member {
 	private String password;
 	
 	@Column(name = "divisioncode")
-	private String divisioncode; 
+	private Integer divisioncode; 
 	
 	@Column(name = "darkmode")
 	private boolean darkmode;
@@ -70,11 +70,11 @@ public class Member {
 		this.password = password;
 	}
 
-	public String getDivisioncode() {
+	public Integer getDivisioncode() {
 		return divisioncode;
 	}
 
-	public void setDivisioncode(String divisioncode) {
+	public void setDivisioncode(Integer divisioncode) {
 		this.divisioncode = divisioncode;
 	}
 	

@@ -22,17 +22,20 @@ public class Board {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer no;
 	
+	@Column(name = "title")
+	private String title;
+	
 	@Column(name = "divisioncode")
-	private String divisioncode;
+	private Integer divisioncode;
 	
 	@Column(name = "category")
 	private String category;
 	
-	@Column(name = "title")
-	private String title;
-	
 	@Column(name = "contents")
 	private String contents;
+	
+	@Column(name = "updatedtime")
+	private Date updatedtime;
 	
 	@Column(name = "addboard")
 	private boolean addboard;
@@ -41,7 +44,7 @@ public class Board {
 	private Integer studentid;
 	
 	@Column(name = "createdtime")
-	private Date createdtime;
+	private String createdtime;
 	
 	@Column(name = "counts")
 	private Integer counts;
@@ -55,13 +58,14 @@ public class Board {
 	
 	
 
-	public Board(Integer no, String divisioncode, String category, String title, String contents, Boolean addboard,
-			Integer studentid, Date createdtime, Integer counts) {
+	public Board(Integer no, Integer divisioncode, String category, String title, String contents, Date updatedtime, Boolean addboard,
+			Integer studentid, String createdtime, Integer counts) {
 		super();
 		this.no = no;
 		this.divisioncode = divisioncode;
 		this.category = category;
 		this.title = title;
+		this.updatedtime = updatedtime;
 		this.contents = contents;
 		this.addboard = addboard;
 		this.studentid = studentid;
@@ -80,11 +84,11 @@ public class Board {
 		this.no = no;
 	}
 
-	public String getDivisioncode() {
+	public Integer getDivisioncode() {
 		return divisioncode;
 	}
 
-	public void setDivisioncode(String divisioncode) {
+	public void setDivisioncode(Integer divisioncode) {
 		this.divisioncode = divisioncode;
 	}
 
@@ -128,11 +132,19 @@ public class Board {
 		this.studentid = studentid;
 	}
 
-	public Date getCreatedtime() {
+	public Date getUpdatedtime() {
+		return updatedtime;
+	}
+
+	public void setUpdatedtime(Date updatedtime) {
+		this.updatedtime = updatedtime;
+	}
+
+	public String getCreatedtime() {
 		return createdtime;
 	}
 
-	public void setCreatedtime(Date createdtime) {
+	public void setCreatedtime(String createdtime) {
 		this.createdtime = createdtime;
 	}
 

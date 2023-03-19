@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.web.board.entity.AnswerBoard;
 import com.web.board.entity.Board;
+import com.web.board.entity.Member;
 
 public interface BoardRepository extends JpaRepository<Board, Integer> {
 	/*
@@ -42,5 +43,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	
 	@Query("select b from Board b where b.studentid= :studentid")
 	List<Board> getBoardByStudentId(@Param("studentid") Integer studentid);
+	
+	// 학과별로 게시물 가져오기
+	@Query("SELECT b FROM Board b WHERE b.divisioncode= :divisioncode")
+	List<Board> getBoardByDivision(@Param("divisioncode")Integer divisioncode);
 }
 

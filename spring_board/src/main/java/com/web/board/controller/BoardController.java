@@ -62,6 +62,14 @@ public class BoardController {
 		
 		return boardService.getBoardByStudentId(studentid);
 	}
+	
+	// get board by division
+		@GetMapping("/board/division/{divisioncode}")
+		public ResponseEntity<List<Board>> getBoardByDivision(
+				@PathVariable Integer divisioncode) {
+			
+			return boardService.getBoardByDivision(divisioncode);
+		}
 
 	// update board
 	@PutMapping("/board/{no}")

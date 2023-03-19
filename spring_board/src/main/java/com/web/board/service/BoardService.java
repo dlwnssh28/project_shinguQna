@@ -75,7 +75,14 @@ public class BoardService {
 		List<Board> board = boardRepository.getBoardByStudentId(studentid);
 				//.orElseThrow(() -> new ResourceNotFoundException("Not exist AnswerBoard Data by no : ["+no+"]"));
 		
-		
+		return ResponseEntity.ok(board);
+	}
+	
+	// get board by division 
+	// 게시물 학과별로 가져오기
+	public ResponseEntity<List<Board>> getBoardByDivision(Integer divisioncode) {
+		List<Board> board = boardRepository.getBoardByDivision(divisioncode);
+				//.orElseThrow(() -> new ResourceNotFoundException("Not exist AnswerBoard Data by no : ["+no+"]"));
 		
 		return ResponseEntity.ok(board);
 	}
